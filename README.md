@@ -1,4 +1,4 @@
-# DSA-algo-C-
+# DSA-algo-C++
 
 Will be uploading notes of DSA Unacademy course of Love Babbar bhaiya.
 
