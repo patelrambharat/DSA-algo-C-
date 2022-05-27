@@ -1,0 +1,39 @@
+Find the first repeating element in an array of integers
+Difficulty Level : Easy
+Last Updated : 10 Feb, 2022
+Given an array of integers, find the first repeating element in it. We need to find the element that occurs more than once and whose index of first occurrence is smallest. 
+
+Examples: 
+
+Input:  arr[] = {10, 5, 3, 4, 3, 5, 6}
+Output: 5 [5 is the first element that repeats]
+
+Input:  arr[] = {6, 10, 5, 4, 9, 120, 4, 6, 10}
+Output: 6 [6 is the first element that repeats]
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int firstrepea(int arr[],int n){
+    unordered_map<int,int>mp;
+    for(int i=0;i<n;i++){
+
+                mp[arr[i]]++;
+            }
+            for(int i=0;i<n;i++){
+                if(mp[arr[i]]>1){
+                    return arr[i];
+                }
+            }
+            return -1;
+}
+
+int main(){
+
+int arr[] = {1, 5, 3, 4, 3, 5, 6};
+ int min =firstrepea(arr,7);
+ if(min != -1){
+    cout<<arr[min];
+ }
+
+}

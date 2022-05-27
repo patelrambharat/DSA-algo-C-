@@ -1,0 +1,35 @@
+Set the j to 0.
+Traversing the array from 0 to n(exclusively, where n is array’s length).
+Check if any element of an array is less than the 0,
+Check if i should not be equal to j,
+Swap the values of indexes arr[i] and arr[j], and increase the value of j.
+Print the array.
+
+
+#include<iostream>
+using namespace std;
+
+void moveend(int arr[],int size){
+int j=0;
+for(int i=0;i<size;i++){
+    if(arr[i]<0){
+        if(i != j){
+            swap(arr[i],arr[j]);
+            j++;
+        }
+    }
+
+}
+
+for(int i=0;i<size;i++){
+    cout<<arr[i]<<" ";
+}
+}
+int main(){
+int arr[] ={1, -1, 3, 2, -7, -5, 11, 6 };
+
+int n = sizeof(arr)/sizeof(arr[0]);
+
+moveend(arr,n);
+
+}

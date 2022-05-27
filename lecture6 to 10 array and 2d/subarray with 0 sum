@@ -1,0 +1,65 @@
+Algorithm
+Declare a Set.
+-Initialize sum to 0.
+Traverse the array, while i < n (length of the array).
+Add sum to arr[i] and store it to sum.
+Check if any of the following conditions is true:
+sum==0 / arr[ i ]==0 / if Set contains the value of sum.
+if true, then return true.
+Add the sum to the Set.
+Return false.
+
+
+Example
+arr[]={-3,2,1,9,6}
+
+Here in the code, we will be traversing an array and add sum and arr[i] and store into sum and after that checking, if sum ==0 or arr[i] is equal to 0 or Set contains the value of sum, if any of the given condition is satisfied then we are going to return true and then add sum into Set.
+
+If none of the sub-array found then we will going to return false.
+
+sum=0, Set={}
+
+i=0, arr [i] = -3
+
+sum = sum+arr[i] => 0 + – 3 = -3
+
+if sum ==0 or arr[i] is equal to 0 or Set contains the value of sum, three of them are false, so we do nothing here and add -3 into Set.
+
+i=1, arr [i] = 2
+
+sum = sum+arr[i] => -3 + 2 = -1
+
+if sum ==0 or arr[i] is equal to 0 or Set contains the value of sum, three of them are false, so we do nothing here and add -1 into Set.
+
+i=2, arr [i] = 1
+
+sum = sum+arr[i] => -1 + 1 = 0
+
+if sum ==0 condition is satisfied here, so we return true, it means we found a sub-array with sum 0.
+
+Output: Yes, a sub-array with sum 0 exists.
+
+#include<bits/stdc++.h>
+using namespace std;
+
+bool subzero(int arr[],int n){
+    unordered_set<int>st;
+    int sum =0;
+    for(int i=0;i<n;i++){
+        sum += arr[i];
+        if(sum ==0 || st.find(sum) != st.end())
+            return true;
+        st.insert(sum);
+    }
+    return false;
+
+}
+int main(){
+    int arr[] = {-3,2,1,9,6};
+     if(subzero(arr,5)){
+        cout<<"yes a subarray with zero sum exist";
+     }
+     else {
+        cout<<"No subarray with zero exist";
+     }
+}

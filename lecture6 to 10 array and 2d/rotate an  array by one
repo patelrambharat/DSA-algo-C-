@@ -1,0 +1,55 @@
+Solution 1: Using Temporary Variable
+This is a simple solution that involves a temporary variable to store the last element. It involves the following steps:
+
+Initialize a temporary variable with the last element of the array
+Iterate the array till n-1 and move the elements to their next position
+Store the temporary element in array[0]
+Print the array
+#include<iostream>
+using namespace std;
+int rotateone(int arr[],int n){
+        int temp= arr[n-1],i;
+        for(int i=n-1;i>0;i--){
+            arr[i] = arr[i-1];
+
+        }
+        arr[0] = temp;
+}
+int main(){
+    int arr[] ={5,4,3,2,1};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    rotateone(arr,n);
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";-
+    }
+}
+
+
+
+Solution 2: Using Pointers
+
+Since the problem needs the last element to be placed at first, we can use 2 pointers that point to the first and last position of the array and start swapping. It involves the following steps:
+
+Assign start with array[0] and end with array[n-1]
+Swap start and end pointers values in the array
+Keeping end pointer fixed, increment the start pointer, and continue swapping
+Perform the above steps till the start is not equal to the end
+Print the array
+
+#include<iostream>
+using namespace std;
+int rotateone(int arr[],int n){
+        int start=0,high =n-1;
+        while(start != high){
+            swap(arr[start],arr[high]);
+            start++;
+        }
+}
+int main(){
+    int arr[] ={5,4,3,2,1};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    rotateone(arr,n);
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }
+}

@@ -1,0 +1,25 @@
+#include<iostream>
+using namespace std;
+
+int palindrome(int arr[],int n){
+    for(int i=0;i<n;i++){
+        int ans =0;
+        int temp = arr[i];
+        while(temp>0){
+                int digit = temp %10;
+                temp = temp/10;
+                ans = ( ans *10)+digit;
+
+                }
+                if(ans != arr[i]){
+                    return 0;
+                }
+    }
+    return 1;
+
+}
+int main(){
+    int arr[] = {3,6,0,6,3};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    cout<<palindrome(arr,n);
+}

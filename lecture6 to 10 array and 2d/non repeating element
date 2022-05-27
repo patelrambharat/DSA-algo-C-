@@ -1,0 +1,73 @@
+Approach 1: Brute force
+
+Algorithm
+Run a loop for I in range 0 to n-1
+Run a loop for j in range 0 to n
+If j becomes equal to n, then print A[i] and return.
+If I is not equal to j and A[i] is equal to A[j], then break from this loop.
+Print that all the elements are repeating in the array.
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void firstnonrepea(int a[],int n){
+
+    for(int i=0;i<n;i++){
+        for(int j=0;j<=n;j++){
+            if(j==n){
+                cout<<"first non repeating element is :" <<a[i];
+                return;
+            }
+            if(j != i && a[i] == a[j]){
+                break;
+            }
+        }
+    }
+
+}
+
+int main(){
+
+int arr[] = {1, 5, 3, 4, 3, 5, 6};
+
+    firstnonrepea(arr,7);
+}
+
+complexity ::::::O(n^2)
+
+
+Approach 2: Using hashing
+
+Algorithm
+Store the frequency of each element in a hash table.
+Run a loop for I in range 0 to n-1
+If the frequency of A[i] in the hash table is 1, print A[i] and return.
+Print that there all the elements in the array that are repeating.
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void firstnonrepea(int a[],int n){
+
+        unordered_map<int ,int>mp;
+        for(int i=0;i<n;i++){
+            mp[a[i]]++;
+        }
+        for(int i=0;i<n;i++){
+            if(a[i]==1){
+                cout<<"first non repeating element is "<<a[i];
+                return;
+            }
+        }
+        cout<<"all the element are repeating ";
+
+}
+
+int main(){
+
+int arr[] = {1, 5, 3, 4, 3, 5, 6};
+
+    firstnonrepea(arr,7);
+}
+complexity ::: O(n)
