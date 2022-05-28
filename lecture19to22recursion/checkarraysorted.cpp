@@ -3,7 +3,9 @@
 #include<vector>
 using namespace std;
 
-/subset power set question
+//subset power set question
+
+
 void solve(vector<int> nums,vector<int> output,int index,vector<vector<int> >&ans){
         //base case 
         if(index >= nums.size()){
