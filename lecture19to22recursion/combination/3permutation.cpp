@@ -1,11 +1,9 @@
 // 46. Permutations
 // Medium
 
-// 10628
+// 10801
 
-// The different ways of arranging a set of objects into a sequential order are termed as Permutation. One of the several ways of choosing items from a large set of objects, without considering an order is termed as Combination.
-
-// 190
+// 192
 
 // Add to List
 
@@ -22,26 +20,28 @@
 
 // Input: nums = [0,1]
 // Output: [[0,1],[1,0]]
+// Example 3:
 
+// Input: nums = [1]
+// Output: [[1]]
 class Solution {
 public:
-    
-    void solve(vector<int>&nums,vector<vector<int>>&ans,int index){
+    void solve(vector<int>& nums,vector<vector<int>>&ans,int index){
         if(index >= nums.size()){
             ans.push_back(nums);
             return;
         }
-        for(int j=index;j<nums.size();j++){
+        for(int j= index;j<nums.size();j++){
             swap(nums[index],nums[j]);
-            solve(nums,ans,index+1);
             
-            //backtrack
-            swap(nums[index],nums[j]);
+            solve(nums,ans,index+1);    //recursive call
+            
+            swap(nums[index],nums[j]);  //backtracking
         }
     }
     vector<vector<int>> permute(vector<int>& nums) {
-        vector<vector<int>>ans;
-        int index=0;
+         vector<vector<int>>ans;
+        int index =0;
         solve(nums,ans,index);
         return ans;
     }
