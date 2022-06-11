@@ -1,18 +1,16 @@
-// 51. N-Queens
+// 52. N-Queens II
 // Hard
 
-// 7021
+// 2044
 
-// 175
+// 218
 
 // Add to List
 
 // Share
 // The n-queens puzzle is the problem of placing n queens on an n x n chessboard such that no two queens attack each other.
 
-// Given an integer n, return all distinct solutions to the n-queens puzzle. You may return the answer in any order.
-
-// Each solution contains a distinct board configuration of the n-queens' placement, where 'Q' and '.' both indicate a queen and an empty space, respectively.
+// Given an integer n, return the number of distinct solutions to the n-queens puzzle.
 
  
 
@@ -20,23 +18,16 @@
 
 
 // Input: n = 4
-// Output: [[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]]
-// Explanation: There exist two distinct solutions to the 4-queens puzzle as shown above
+// Output: 2
+// Explanation: There are two distinct solutions to the 4-queens puzzle as shown.
 // Example 2:
 
 // Input: n = 1
-// Output: [["Q"]]
- 
+// Output: 1
 
- #include <iostream>
-#include<vector>
-
-
-using namespace std;
 class Solution {
-  public:
-    bool isSafe(int row, int col, vector < string > board, int n) {
-      // check upper element
+public:
+     bool isSafe1(int row, int col, vector < string > board, int n) {
       int duprow = row;
       int dupcol = col;
 
@@ -65,24 +56,20 @@ class Solution {
       }
       return true;
     }
-
-  public:
     void solve(int col, vector < string > & board, vector < vector < string >> & ans, int n) {
       if (col == n) {
         ans.push_back(board);
         return;
       }
       for (int row = 0; row < n; row++) {
-        if (isSafe(row, col, board, n)) {
+        if (isSafe1(row, col, board, n)) {
           board[row][col] = 'Q';
           solve(col + 1, board, ans, n);
           board[row][col] = '.';
         }
       }
     }
-
-  public:
-    vector < vector < string >> solveNQueens(int n) {
+    int totalNQueens(int n) {
       vector < vector < string >> ans;
       vector < string > board(n);
       string s(n, '.');
@@ -90,20 +77,6 @@ class Solution {
         board[i] = s;
       }
       solve(0, board, ans, n);
-      return ans;
+      return ans.size();
     }
 };
-int main() {
-  int n = 4; // we are taking 4*4 grid and 4 queens
-  Solution obj;
-  vector < vector < string >> ans = obj.solveNQueens(n);
-  for (int i = 0; i < ans.size(); i++) {
-    cout << "Arrangement " << i + 1 << "\n";
-    for (int j = 0; j < ans[0].size(); j++) {
-      cout << ans[i][j];
-      cout << endl;
-    }
-    cout << endl;
-  }
-  return 0;
-}
