@@ -36,3 +36,74 @@
 // Constraints:
 // 1 <= Q <= 100
 // 1 <= x <= 100
+#include<bits/stdc++.h>
+using namespace std;
+struct Node{
+    int data;
+    Node* next;
+
+}
+Node* top;
+void push(int data){
+    Node* temp = new Node();
+    if(!temp){
+        cout<<"\n stack overflow"<<endl;
+        exit(1);
+    }
+    //add at the top and change top as new node
+    temp -> data = data;
+    temp -> next = top;
+    top = temp;
+
+}
+int isEmpty(){
+    //if top is null then empty
+    return top== NULL;
+}
+int peek(){
+    //if stack is not empty then return top node's data
+    if(!isEmpty())
+        return top -> data;
+    else 
+        exit(1);
+}
+void pop(){
+    Node* temp;
+    if(top == NULL){
+        cout<<"\nStack Underflow"<<endl;
+        exit(1);
+    }
+    else{
+        temp =top;
+        top = top -> next;
+        free(temp);
+    }
+
+}
+
+
+
+gfg solution 
+//Function to push an integer into the stack.
+void MyStack ::push(int x) 
+{
+     // Your Code
+   StackNode* temp = new StackNode(x);
+   temp->next = top;
+   top = temp;
+
+}
+
+//Function to remove an item from top of the stack.
+int MyStack ::pop() 
+{
+      // Your Code
+   if(top == NULL) 
+       return -1;
+   
+   int x = top->data;
+   top = top->next;
+   
+   return x;
+
+}
