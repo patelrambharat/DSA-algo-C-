@@ -1,0 +1,7 @@
+void inorder(TreeNode<int> *root,vector<int> &in){    if(root==NULL)        return;    inorder(root->left,in);    in.push_back(root->data);    inorder(root->right,in); }
+
+vector<int> mergeArray(vector<int> &bst1,vector<int> &bst2){    vector<int> mergedArray(bst1.size()+bst2.size());    int i=0,j=0,k=0;    while(i<bst1.size() && j<bst2.size()){        if(bst1[i]<bst2[j]){            mergedArray[k++]=bst1[i];            i++;        }        else{              mergedArray[k++]=bst2[j];            j++;        }    }    while(i<bst1.size()){         mergedArray[k++]=bst1[i];        i++;    }     while(j<bst2.size()){         mergedArray[k++]=bst2[j];         j++;    }    return mergedArray; }
+
+TreeNode<int>* inorderToBST(int s,int e,vector<int> inorderVal){   if(s>e)       return NULL;    int mid=(s+e)/2;        TreeNode<int>* node= new TreeNode<int>(inorderVal[mid]);    node->left=inorderToBST(s,mid-1,inorderVal);    node->right=inorderToBST(mid+1,e,inorderVal);    return node; }
+
+TreeNode<int> *mergeBST(TreeNode<int> *root1, TreeNode<int> *root2){    //step 1 store inorder    vector<int> bst1,bst2;    inorder(root1,bst1);    inorder(root2,bst2);        //step 2 merge two sorted arrays    vector<int> mergedArray = mergeArray(bst1,bst2);        //step 3 inorder to bst    int s=0;    int e=mergedArray.size()-1;    return inorderToBST(s,e,mergedArray);   }
