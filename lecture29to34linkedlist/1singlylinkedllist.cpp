@@ -90,6 +90,7 @@ void deleteNode(Node* &head, int target, int pos) {
             prev = temp;
             temp = temp->next;
         }
+        
         //here we are assuiming that we have found the element
 
         if(temp == NULL)

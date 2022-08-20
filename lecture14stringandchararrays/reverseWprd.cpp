@@ -3,7 +3,7 @@ using namespace std;
 
 void reverseWords(string s){
    // temporary vector to store all words
-    vector<string> v;
+    vector<string> tmp;
     string str = "";
     for (int i = 0; i < s.length(); i++)
     {

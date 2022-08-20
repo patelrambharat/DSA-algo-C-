@@ -15,6 +15,14 @@ class Node {
     }
 
 };
+void insertAthead(Node* &head, int d){
+    //step 1: create a new node
+    Node * newNode= new Node(d);
+    //step2: set next pointer to head
+    newNode -> next = head;
+    //step 2: update head
+    head = newNode;
+}
 
 void insertAtHead(Node* &head, int d) {
         //step 1: create new node
